@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Clínica Aviat — Sitio web
 
-## Getting Started
+Sitio institucional de **Aviat, Centro Quirúrgico y de Medicina Ambulatoria** (La Rioja, Argentina).
 
-First, run the development server:
+**Demo:** [aviat.riojadev.com.ar](https://aviat.riojadev.com.ar)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4**
+- **framer-motion** y **GSAP** para animaciones
+- **Lenis** para scroll suave
+- Exportado como **sitio estático**: no requiere servidor y funciona en cualquier hosting
+
+## Secciones
+
+- **Inicio:** presentación, instalaciones y accesos rápidos
+- **La clínica:** quiénes somos e instalaciones
+- **Servicios:** áreas y especialidades
+- **Ubicación:** dirección, mapa y contacto
+- Botón flotante de WhatsApp en todas las páginas
+
+## Estructura
+
+```
+src/
+├── app/                 Páginas (inicio, la-clinica, servicios, ubicacion)
+│   ├── globals.css      Colores y estilos base de la marca
+│   ├── layout.tsx       Tipografías, navegación y pie de página
+│   └── template.tsx     Transición entre páginas
+├── components/          Componentes visuales y animaciones
+└── lib/config.ts        Contenido del sitio: textos, contacto, servicios, galería
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Contenido** (textos, teléfonos, horarios, servicios): se edita en `src/lib/config.ts`.
+- **Identidad visual** (colores): variables en `src/app/globals.css`.
+- **Tipografías:** `src/app/layout.tsx`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Desarrollo local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Requiere Node.js 22.
 
-## Learn More
+```bash
+npm ci          # instala dependencias
+npm run dev     # servidor local en http://localhost:3000
+npm run build   # genera el sitio estático en la carpeta dist/
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Publicación
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cada cambio en la rama `main` se publica automáticamente.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Build:** `npm run build`
+- **Carpeta de salida:** `dist`
+- **Subcarpeta (opcional):** por defecto el sitio funciona en la raíz del dominio. Para publicarlo bajo una subcarpeta (por ejemplo `/aviat`), definir la variable de entorno `BASE_PATH=/aviat` al compilar.
 
-## Deploy on Vercel
+## Desarrollo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Agustín Fernández Gastón — [github.com/AgusFernandezGaston](https://github.com/AgusFernandezGaston)
